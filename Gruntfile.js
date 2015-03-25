@@ -12,9 +12,12 @@ module.exports = function(grunt) {
     },
     copy: {
       main: {
+        src: 'images/*',
+        dest: 'dist/',
         files: [
           {expand: true, flatten: true, src: ['bower_components/jquery/dist/jquery.min.js'], dest: 'dist/js/', filter: 'isFile'},
           {expand: true, flatten: true, src: ['bower_components/normalize.css/normalize.css'], dest: 'dist/css/', filter: 'isFile'},
+          {expand: true, flatten: true, src: ['images/**/*.*'], dest: 'dist/img/', filter: 'isFile'},
           {expand: true, flatten: true, src: ['index.html'], dest: 'dist/', filter: 'isFile'},
         ],
       },
@@ -28,8 +31,8 @@ module.exports = function(grunt) {
     },
     watch: {
       gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint:gruntfile']
+        files: ['sass/**/*.scss', 'js/**/*.js', '**/*.html', 'images/**/*.*'],
+        tasks: ['build']
       },
     }
   });
@@ -41,7 +44,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
-  grunt.registerTask('default', ['copy', 'uglify', 'sass']);
-  grunt.registerTask('watch', ['watch']);
+  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('build', ['copy', 'uglify', 'sass']);
 
 };
