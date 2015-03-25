@@ -14,6 +14,7 @@ module.exports = function(grunt) {
       main: {
         files: [
           {expand: true, flatten: true, src: ['bower_components/jquery/dist/jquery.min.js'], dest: 'dist/js/', filter: 'isFile'},
+          {expand: true, flatten: true, src: ['bower_components/normalize.css/normalize.css'], dest: 'dist/css/', filter: 'isFile'},
           {expand: true, flatten: true, src: ['index.html'], dest: 'dist/', filter: 'isFile'},
         ],
       },
