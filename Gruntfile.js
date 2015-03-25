@@ -12,13 +12,11 @@ module.exports = function(grunt) {
     },
     copy: {
       main: {
-        src: 'images/*',
-        dest: 'dist/',
         files: [
           {expand: true, flatten: true, src: ['bower_components/jquery/dist/jquery.min.js'], dest: 'dist/js/', filter: 'isFile'},
           {expand: true, flatten: true, src: ['bower_components/normalize.css/normalize.css'], dest: 'dist/css/', filter: 'isFile'},
-          {expand: true, flatten: true, src: ['images/**/*.*'], dest: 'dist/img/', filter: 'isFile'},
           {expand: true, flatten: true, src: ['index.html'], dest: 'dist/', filter: 'isFile'},
+          {expand: true, src: ['img/**'], dest: 'dist/'},
         ],
       },
     },
@@ -31,7 +29,7 @@ module.exports = function(grunt) {
     },
     watch: {
       gruntfile: {
-        files: ['sass/**/*.scss', 'js/**/*.js', '**/*.html', 'images/**/*.*'],
+        files: ['sass/**/*.scss', 'js/**/*.js', '**/*.html', 'img/**'],
         tasks: ['build']
       },
     }
