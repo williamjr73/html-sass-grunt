@@ -27,6 +27,14 @@ module.exports = function(grunt) {
         }
       }
     },
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 versions', 'ie 8', 'ie 9']
+      },
+      no_dest_single: {
+        src: 'dist/css/styles.css'
+      },
+    },
     watch: {
       gruntfile: {
         files: ['sass/**/*.scss', 'js/**/*.js', '**/*.html', 'img/**'],
@@ -40,9 +48,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-autoprefixer');
 
   // Default task.
   grunt.registerTask('default', ['build', 'watch']);
-  grunt.registerTask('build', ['copy', 'uglify', 'sass']);
+  grunt.registerTask('build', ['copy', 'uglify', 'sass', 'autoprefixer']);
 
 };
